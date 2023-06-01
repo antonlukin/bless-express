@@ -1,0 +1,52 @@
+@import '../app/animations.scss';
+
+.wrapper {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+
+  width: var(--max-width);
+  min-height: 40rem;
+  height: 100vh;
+  max-width: 100%;
+
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 5rem 2rem;
+}
+
+.frog {
+  display: block;
+  position: relative;
+
+  width: 9.4375rem;
+  height: 5.4375rem;
+
+  background-image: url('/decor/loader-frog.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  animation: loader-frog 2s infinite linear;
+}
+
+.title {
+  display: block;
+  position: relative;
+
+  width: 16rem;
+  max-width: 100%;
+  margin-top: 2.5rem;
+
+  font-family: var(--font-caption);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 0.875;
+  text-align: center;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    animation: loader-title 2s infinite linear;
+  }
+}

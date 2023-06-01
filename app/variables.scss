@@ -1,0 +1,16 @@
+:root {
+  --max-width: 88rem;
+
+  --font-serif: 'Seagram', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-caption: 'English Towne', serif;
+
+  --gradinet-confession: conic-gradient(from 164.72deg at 49.95% 50.05%, #FFC75F 0deg, #FFF39D 164.37deg, rgba(255, 255, 255, 0) 228.75deg, rgba(255, 243, 157, 0) 330deg, #FFC75F 360deg);
+  --gradient-button: linear-gradient(92.75deg, #FFBD5A -6.03%, #FFF59F 52.08%, #FFD56A 109.08%);
+  --gradient-hover: linear-gradient(92.75deg, #FF9900 -6.03%, #FFD583 52.5%, #FFB800 109.08%);
+
+  --color-black: 0, 0, 0;
+  --color-white:  255, 255, 255;
+  --color-primary: 206, 168, 118;
+  --color-secondary: 254, 214, 135;
+}

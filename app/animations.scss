@@ -1,0 +1,47 @@
+@keyframes loader-title {
+  0% {
+    content: '';
+  }
+
+  25% {
+    content: '.';
+  }
+
+  50% {
+    content: '..';
+  }
+
+  75% {
+    content: '...';
+  }
+}
+
+@keyframes loader-frog {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes color-transition {
+  0% {
+    background-color: #000;
+  }
+
+  100% {
+    background-color: rgb(var(--color-secondary));
+  }
+}

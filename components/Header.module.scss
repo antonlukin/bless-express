@@ -1,0 +1,92 @@
+.wrapper {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+
+  width: 100%;
+  height: auto;
+
+  @media screen and (max-width: 1023px) {
+    position: absolute;
+  }
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: var(--max-width);
+  height: 5rem;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media screen and (max-width: 1023px) {
+    padding-right: 0;
+  }
+}
+
+.logo {
+  display: block;
+  font-size: 1.5rem;
+
+  a {
+    transition: opacity 0.25s;
+
+    &:hover, &:focus {
+      opacity: 0.5;
+    }
+  }
+}
+
+.menu {
+  display: flex;
+
+  margin-left: 2rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+
+  white-space: nowrap;
+  overflow: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  p {
+    cursor: default;
+    color: inherit;
+
+    span {
+      opacity: 0.375;
+    }
+
+    a {
+      margin-right: 0;
+      opacity: 1;
+    }
+
+    @media screen and (max-width: 1023px) {
+      padding-right: 2rem;
+    }
+  }
+
+  a {
+    cursor: pointer;
+
+    margin-right: 1.5rem;
+    color: inherit;
+
+    transition: opacity 0.25s;
+
+    &:focus, &:hover {
+      opacity: 0.375;
+    }
+  }
+}

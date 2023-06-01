@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'English Towne';
+  src:
+    url('../assets/fonts/english-towne.woff2') format('woff2'),
+    url('../assets/fonts/english-towne.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Seagram';
+  src:
+    url('../assets/fonts/seagram.woff2') format('woff2'),
+    url('../assets/fonts/seagram.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src:
+    url('../assets/fonts/inter-regular.woff2') format('woff2'),
+    url('../assets/fonts/inter-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}

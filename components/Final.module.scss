@@ -1,0 +1,207 @@
+.wrapper {
+  display: grid;
+  grid-template-areas: "title certificate others" "share certificate others";
+  grid-template-columns: 21rem 1fr 1fr;
+  grid-template-rows: auto 8.75rem;
+
+  width: var(--max-width);
+  height: 100vh;
+  min-height: 48rem;
+  max-width: 100%;
+
+  margin: 0 auto;
+  padding: 5rem 2rem 2rem;
+}
+
+.title {
+  grid-area: title;
+  display: flex;
+  align-items: flex-end;
+  padding-right: 3.25rem;
+
+  font-family: var(--font-caption);
+  font-weight: 700;
+  font-size: 7.5rem;
+  line-height: 0.75;
+}
+
+.share {
+  grid-area: share;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  padding-right: 3.25rem;
+
+  figure {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 0.375rem;
+  }
+
+  strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+}
+
+.certificate {
+  grid-area: certificate;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  color: rgb(var(--color-white));
+  background-color: rgb(var(--color-black));
+
+  border: solid 3px rgb(var(--color-black));
+  border-radius: 0.75rem 0 0 0.75rem;
+
+  h4 {
+    display: flex;
+    position: relative;
+    width: 100%;
+    padding: 0.5rem;
+
+    font-family: var(--font-caption);
+    font-size: 5.5rem;
+    line-height: 0.75;
+
+    &::before {
+      content: '';
+      display: block;
+
+      flex: 0 0 9rem;
+      width: 9rem;
+      height: 10.75rem;
+
+      background-image: url('/decor/final-deer.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+
+    span {
+      display: block;
+    }
+
+    span::first-letter {
+      font-size: 0;
+      visibility: hidden;
+    }
+  }
+
+  blockquote {
+    display: block;
+
+    width: 22rem;
+    max-width: 100%;
+    padding-top: 2rem;
+
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.25;
+
+    text-align: center;
+
+    background-image: url('/decor/description-fish.png');
+    background-size: 5.625rem auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    p {
+      margin-bottom: 2rem;
+    }
+  }
+
+  figure {
+    display: block;
+
+    width: 100%;
+    margin-top: auto;
+    padding: 2rem;
+  }
+
+  figcaption {
+    display: block;
+
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    font-family: var(--font-sans);
+
+    color: rgb(var(--color-primary));
+  }
+}
+
+.others {
+  grid-area: others;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  overflow: auto;
+
+  color: rgb(var(--color-black));
+  background-color: rgb(var(--color-white));
+
+  border: solid 3px rgb(var(--color-black));
+  border-radius: 0 0.75rem 0.75rem 0;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--color-black));
+
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: rgb(var(--color-black));
+  }
+
+  scrollbar-color: rgb(var(--color-black)) rgb(var(--color-white));
+}
+
+.item {
+  display: flex;
+
+  width: 100%;
+  margin-bottom: 3rem;
+
+  picture {
+    order: 2;
+    flex: 0 0 6.5rem;
+  }
+
+  figcaption {
+    flex: 1 1 auto;
+
+    padding-right: 1.25rem;
+    font-size: 1rem;
+  }
+
+  h5 {
+    display: block;
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  &:nth-child(even) {
+    padding-right: 3rem;
+  }
+}
