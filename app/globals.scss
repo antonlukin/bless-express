@@ -14,9 +14,16 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  font: normal 16px/1.5 var(--font-serif);
+
+  @media screen and (max-width: 479px) {
+    font-size: 14px;
+  }
+}
+
 body {
   position: relative;
-  font: normal 16px/1.5 var(--font-serif);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,50 +33,4 @@ a {
   color: inherit;
   text-decoration: none;
   outline: none;
-}
-
-body {
-  display: block;
-  position: relative;
-
-  color: rgb(var(--color-black));
-  background-color: rgb(var(--color-white));
-
-  &[data-screen="welcome"] {
-    max-height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-
-    color: rgb(var(--color-white));
-    background-color: rgb(var(--color-black));
-  }
-
-  &[data-screen="transition"] {
-    animation: color-transition 1s;
-  }
-
-  &[data-screen="confession"] {
-    color: rgb(var(--color-black));
-    background-color: rgb(var(--color-secondary));
-
-    &::after {
-      content: '';
-
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-
-      width: 100%;
-      height: 100%;
-
-      background-image: var(--gradinet-confession);
-    }
-  }
-
-  @media screen and (max-width: 1023px) {
-    max-height: auto;
-    overflow-y: auto;
-    scroll-snap-type: none;
-  }
 }

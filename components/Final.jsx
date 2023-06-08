@@ -1,9 +1,14 @@
+'use client'
+
+import Header from '../components/Header'
 import Button from './Button'
 import styles from './Final.module.scss'
 
-const Final = () => {
+const Final = ({results}) => {
   return (
     <section className={styles.wrapper}>
+      <Header />
+
       <h3 className={styles.title}>We bless you</h3>
 
       <div className={styles.share}>
@@ -39,80 +44,22 @@ const Final = () => {
       </div>
 
       <div className={styles.others}>
-        <figure className={styles.item}>
-          <picture>
-            <source srcSet="/others/1.jpg" type="image/jpeg" />
-            <img src="/others/1.jpg" alt="Other sin" width={300} height={300} />
-          </picture>
+        {results && results.map((result, i) =>
+          <figure className={styles.item} key={i}>
+            <picture>
+              <source srcSet={result.image} type="image/jpeg" />
+              <img src={result.image} alt={result.message} width={300} height={300} />
+            </picture>
 
-          <figcaption>
-            <h5>I blew up my work project</h5>
-            <p>Noah</p>
-          </figcaption>
-        </figure>
-
-        <figure className={styles.item}>
-          <picture>
-            <source srcSet="/others/2.jpg" type="image/jpeg" />
-            <img src="/others/1.jpg" alt="Other sin" width={300} height={300} />
-          </picture>
-
-          <figcaption>
-            <h5>I’ve been watching Tiktoks instead of living life</h5>
-            <p>Iren</p>
-          </figcaption>
-        </figure>
-
-        <figure className={styles.item}>
-          <picture>
-            <source srcSet="/others/2.jpg" type="image/jpeg" />
-            <img src="/others/1.jpg" alt="Other sin" width={300} height={300} />
-          </picture>
-
-          <figcaption>
-            <h5>I’ve been watching Tiktoks instead of living life</h5>
-            <p>Iren</p>
-          </figcaption>
-        </figure>
-
-        <figure className={styles.item}>
-          <picture>
-            <source srcSet="/others/2.jpg" type="image/jpeg" />
-            <img src="/others/1.jpg" alt="Other sin" width={300} height={300} />
-          </picture>
-
-          <figcaption>
-            <h5>I’ve been watching Tiktoks instead of living life</h5>
-            <p>Iren</p>
-          </figcaption>
-        </figure>
-
-        <figure className={styles.item}>
-          <picture>
-            <source srcSet="/others/2.jpg" type="image/jpeg" />
-            <img src="/others/1.jpg" alt="Other sin" width={300} height={300} />
-          </picture>
-
-          <figcaption>
-            <h5>I’ve been watching Tiktoks instead of living life</h5>
-            <p>Iren</p>
-          </figcaption>
-        </figure>
-
-        <figure className={styles.item}>
-          <picture>
-            <source srcSet="/others/2.jpg" type="image/jpeg" />
-            <img src="/others/1.jpg" alt="Other sin" width={300} height={300} />
-          </picture>
-
-          <figcaption>
-            <h5>I’ve been watching Tiktoks instead of living life</h5>
-            <p>Iren</p>
-          </figcaption>
-        </figure>
+            <figcaption>
+              <h5>{result.message}</h5>
+              <p>{result.name}</p>
+            </figcaption>
+          </figure>
+        )}
       </div>
     </section>
-  );
+  )
 }
 
-export default Final;
+export default Final

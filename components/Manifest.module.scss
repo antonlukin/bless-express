@@ -1,0 +1,209 @@
+.wrapper {
+  display: block;
+
+  width: var(--max-width);
+  max-width: 100%;
+
+  margin: 0 auto;
+  padding: 3.25rem 2rem 2rem;
+}
+
+.title {
+  display: block;
+  position: relative;
+
+  width: 100%;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-image: url('/decor/manifest-parts.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    transform: scale(1.25);
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-top: 4rem;
+  }
+}
+
+.summary {
+  display: block;
+
+  width: 41.25rem;
+  max-width: 100%;
+  margin: 6.75rem auto 5rem;
+
+  font-size: 2rem;
+  line-height: 1.125;
+  text-align: center;
+
+  @media screen and (max-width: 767px) {
+    margin: 3.5rem auto;
+    font-size: 1.75rem;
+    line-height: 1.25;
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 1.5rem;
+    line-height: 1.375;
+  }
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  gap: 6.75rem;
+  width: 100%;
+
+  @media screen and (max-width: 1023px) {
+    gap: 2.5rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+.description {
+  display: block;
+
+  max-width: 100%;
+  font-size: 1.5rem;
+  line-height: 1.375;
+
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 1rem;
+  }
+}
+
+.hints {
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+
+  width: auto;
+  max-width: 45rem;
+  height: 100%;
+
+  @media screen and (max-width: 767px) {
+    align-items: center;
+  }
+}
+
+.item {
+  display: block;
+  position: relative;
+
+  width: 16rem;
+
+  picture {
+    display: block;
+  }
+
+  img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  h5 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.075;
+
+    @media screen and (max-width: 1023px) {
+      font-size: 1.25rem
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    width: 10rem;
+  }
+}
+
+.item:nth-child(1) {
+  transform: translate(0.5rem, 0);
+
+  figcaption {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: 0;
+
+    transform: translate(calc(100% + 1rem), -75%);
+
+    @media screen and (max-width: 767px) {
+      position: relative;
+      top: auto;
+      right: auto;
+
+      margin-top: 1rem;
+      transform: none;
+    }
+  }
+}
+
+.item:nth-child(2) {
+  transform: translate(24rem, -8rem);
+
+  @media screen and (max-width: 1199px) {
+    transform: translate(18rem, -8rem);
+  }
+
+  @media screen and (max-width: 1023px) {
+    transform: translate(11.25rem, -5rem);
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-top: 2rem;
+    transform: translate(0, 0);
+  }
+}
+
+.item:nth-child(3) {
+  transform: translate(5rem, -22rem);
+
+  @media screen and (max-width: 1199px) {
+    transform: translate(1rem, -12rem);
+  }
+
+  @media screen and (max-width: 1023px) {
+    transform: translate(0, -10rem);
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-top: 2rem;
+    transform: translate(0, 0);
+  }
+}

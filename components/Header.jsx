@@ -1,17 +1,23 @@
 import Link from 'next/link'
 import styles from './Header.module.scss'
 
-const Header = () => {
+const Header = ({isFixed}) => {
+  const classes = [styles.wrapper]
+
+  if (isFixed) {
+    classes.push(styles.fixed)
+  }
+
   return (
-    <header className={styles.wrapper}>
+    <header className={classes.join(' ')}>
       <div className={styles.inner}>
         <h1 className={styles.logo}>
           <Link href='/'>BND</Link>
         </h1>
 
         <nav className={styles.menu}>
-          <Link href=''>Manifest</Link>
-          <Link href=''>Get Indulgence</Link>
+          <Link href='/manifest'>Manifest</Link>
+          <Link href='/'>Get Indulgence</Link>
 
           <p>
             <span>Created by </span>
@@ -20,7 +26,7 @@ const Header = () => {
         </nav>
       </div>
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header

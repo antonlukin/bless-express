@@ -18,11 +18,19 @@
 
 @keyframes loader-frog {
   0% {
-    transform: rotate(0);
+    transform: rotate(0) translateY(1rem);
+  }
+
+  10% {
+    transform: rotate(0) translateY(1rem);
+  }
+
+  50% {
+    transform: rotate(180deg) translateY(-2rem);
   }
 
   100% {
-    transform: rotate(360deg);
+    transform: rotate(360deg) translateY(1rem);
   }
 }
 

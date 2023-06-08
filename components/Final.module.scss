@@ -11,6 +11,26 @@
 
   margin: 0 auto;
   padding: 5rem 2rem 2rem;
+
+  color: rgb(var(--color-black));
+  background-color: rgba(var(--color-white), 0.875);
+
+  @media screen and (max-width: 1279px) {
+    grid-template-areas: "title title" "certificate others" "certificate others" "share share";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    height: auto;
+    min-height: 0;
+  }
+
+  @media screen and (max-width: 1023px) {
+    grid-template-areas: "title" "certificate" "share" "others";
+    grid-template-columns: 100%;
+  }
+
+  @media screen and (max-width: 479px) {
+    padding: 5rem 1.5rem 2rem;
+  }
 }
 
 .title {
@@ -23,6 +43,26 @@
   font-weight: 700;
   font-size: 7.5rem;
   line-height: 0.75;
+
+  @media screen and (max-width: 1279px) {
+    margin-bottom: 2rem;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 1023px) {
+    padding: 0;
+    justify-content: center;
+    font-size: 6.25rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 1.5rem;
+    font-size: 4.75rem;
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 4.25rem;
+  }
 }
 
 .share {
@@ -31,6 +71,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
+  max-width: 100%;
   padding-right: 3.25rem;
 
   figure {
@@ -46,6 +87,15 @@
     font-size: 1.5rem;
     font-weight: 400;
   }
+
+  @media screen and (max-width: 1279px) {
+    width: 24rem;
+    margin-top: 2.5rem;
+  }
+
+  @media screen and (max-width: 1023px) {
+    margin-bottom: 3.25rem;
+  }
 }
 
 .certificate {
@@ -54,8 +104,6 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  width: 100%;
-  height: 100%;
 
   color: rgb(var(--color-white));
   background-color: rgb(var(--color-black));
@@ -67,6 +115,7 @@
     display: flex;
     position: relative;
     width: 100%;
+    max-width: 100%;
     padding: 0.5rem;
 
     font-family: var(--font-caption);
@@ -83,8 +132,20 @@
 
       background-image: url('/decor/final-deer.png');
       background-repeat: no-repeat;
-      background-position: center;
+      background-position: 0 0;
       background-size: contain;
+
+      @media screen and (max-width: 1023px) {
+        flex: 0 0 7rem;
+        width: 7rem;
+        height: 9.75rem;
+      }
+
+      @media screen and (max-width: 479px) {
+        flex: 0 0 6.25rem;
+        width: 6.25rem;
+        height: 7.25rem;
+      }
     }
 
     span {
@@ -95,14 +156,33 @@
       font-size: 0;
       visibility: hidden;
     }
+
+    @media screen and (max-width: 1023px) {
+      width: 32rem;
+      padding: 2rem 2rem 0;
+      font-size: 4.5rem;
+    }
+
+    @media screen and (max-width: 767px) {
+      font-size: 4.25rem;
+    }
+
+    @media screen and (max-width: 479px) {
+      font-size: 3.75rem;
+    }
+
+    @media screen and (max-width: 359px) {
+      padding: 1rem;
+      font-size: 3.25rem;
+    }
   }
 
   blockquote {
     display: block;
 
-    width: 22rem;
+    width: 26rem;
     max-width: 100%;
-    padding-top: 2rem;
+    padding: 2rem;
 
     font-size: 1.25rem;
     font-weight: 400;
@@ -117,6 +197,18 @@
 
     p {
       margin-bottom: 2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @media screen and (max-width: 1023px) {
+      width: 32rem;
+    }
+
+    @media screen and (max-width: 359px) {
+      padding: 1rem;
     }
   }
 
@@ -124,8 +216,17 @@
     display: block;
 
     width: 100%;
+    max-width: 100%;
     margin-top: auto;
     padding: 2rem;
+
+    @media screen and (max-width: 1023px) {
+      width: 32rem;
+    }
+
+    @media screen and (max-width: 359px) {
+      padding: 1rem;
+    }
   }
 
   figcaption {
@@ -137,14 +238,21 @@
 
     color: rgb(var(--color-primary));
   }
+
+  @media screen and (max-width: 1279px) {
+    max-height: 42rem;
+  }
+
+  @media screen and (max-width: 1023px) {
+    max-height: none;
+    border-radius: 0.75rem;
+  }
 }
 
 .others {
   grid-area: others;
 
   display: block;
-  width: 100%;
-  height: 100%;
   padding: 2rem;
   overflow: auto;
 
@@ -168,6 +276,16 @@
   }
 
   scrollbar-color: rgb(var(--color-black)) rgb(var(--color-white));
+
+  @media screen and (max-width: 1279px) {
+    max-height: 42rem;
+  }
+
+  @media screen and (max-width: 1023px) {
+    max-height: none;
+    padding: 0;
+    border: 0;
+  }
 }
 
 .item {

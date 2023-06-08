@@ -1,5 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.svg$/,
@@ -7,6 +6,12 @@ const nextConfig = {
     });
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: '/share/:path*',
+        destination: 'https://bless.express/share/:path*',
+      },
+    ]
+  }
 }
-
-module.exports = nextConfig

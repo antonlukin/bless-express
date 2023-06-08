@@ -1,18 +1,21 @@
 @import '../app/animations.scss';
 
 .wrapper {
-  display: grid;
-  align-content: center;
-  justify-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
 
   width: var(--max-width);
-  min-height: 40rem;
   height: 100vh;
   max-width: 100%;
 
   margin: 0 auto;
   overflow: hidden;
   padding: 5rem 2rem;
+
+  color: rgb(var(--color-black));
+  background-color: rgb(var(--color-white));
 }
 
 .frog {
@@ -26,7 +29,7 @@
   background-size: contain;
   background-repeat: no-repeat;
 
-  animation: loader-frog 2s infinite linear;
+  animation: loader-frog 2.625s infinite linear;
 }
 
 .title {
