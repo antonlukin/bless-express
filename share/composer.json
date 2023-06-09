@@ -1,0 +1,6 @@
+{
+    "require": {
+        "antonlukin/poster-editor": "^5.8",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}
