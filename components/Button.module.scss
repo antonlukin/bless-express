@@ -3,13 +3,14 @@
   display: block;
   position: relative;
 
-  height: 3.5rem;
+  height: 3.75rem;
   padding: 0 0.75rem;
   outline: none;
 
   font-family: inherit;
   font-size: 1.5rem;
 
+  color: rgb(var(--color-black));
   background-image: var(--gradient-button);
 
   border: solid 2px rgb(var(--color-black));

@@ -37,6 +37,7 @@
   grid-area: title;
   display: flex;
   align-items: flex-end;
+  max-width: 100%;
   padding-right: 3.25rem;
 
   font-family: var(--font-caption);
@@ -50,8 +51,10 @@
   }
 
   @media screen and (max-width: 1023px) {
+    width: 32rem;
+    margin: 0 auto 2rem;
     padding: 0;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 6.25rem;
   }
 
@@ -61,7 +64,11 @@
   }
 
   @media screen and (max-width: 479px) {
-    font-size: 4.25rem;
+    font-size: 3.875rem;
+  }
+
+  @media screen and (max-width: 359px) {
+    font-size: 3.25rem;
   }
 }
 
@@ -89,12 +96,14 @@
   }
 
   @media screen and (max-width: 1279px) {
-    width: 24rem;
+    width: 32rem;
     margin-top: 2.5rem;
   }
 
   @media screen and (max-width: 1023px) {
-    margin-bottom: 3.25rem;
+    width: 32rem;
+    margin: 2.5rem auto 3.25rem;
+    padding-right: 0;
   }
 }
 
@@ -104,6 +113,7 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  max-width: 100%;
 
   color: rgb(var(--color-white));
   background-color: rgb(var(--color-black));
@@ -127,7 +137,6 @@
       display: block;
 
       flex: 0 0 9rem;
-      width: 9rem;
       height: 10.75rem;
 
       background-image: url('/decor/final-deer.png');
@@ -137,14 +146,17 @@
 
       @media screen and (max-width: 1023px) {
         flex: 0 0 7rem;
-        width: 7rem;
         height: 9.75rem;
       }
 
       @media screen and (max-width: 479px) {
-        flex: 0 0 6.25rem;
-        width: 6.25rem;
-        height: 7.25rem;
+        flex: 0 0 5.25rem;
+        height: 6rem;
+      }
+
+      @media screen and (max-width: 359px) {
+        flex: 0 0 4.25rem;
+        height: 6rem;
       }
     }
 
@@ -168,12 +180,12 @@
     }
 
     @media screen and (max-width: 479px) {
-      font-size: 3.75rem;
+      padding: 1rem;
+      font-size: 3.25rem;
     }
 
     @media screen and (max-width: 359px) {
-      padding: 1rem;
-      font-size: 3.25rem;
+      font-size: 2.75rem;
     }
   }
 
@@ -207,7 +219,7 @@
       width: 32rem;
     }
 
-    @media screen and (max-width: 359px) {
+    @media screen and (max-width: 479px) {
       padding: 1rem;
     }
   }
@@ -219,13 +231,15 @@
     max-width: 100%;
     margin-top: auto;
     padding: 2rem;
+    font-size: 1rem;
 
     @media screen and (max-width: 1023px) {
       width: 32rem;
     }
 
-    @media screen and (max-width: 359px) {
+    @media screen and (max-width: 479px) {
       padding: 1rem;
+      font-size: 0.9375rem;
     }
   }
 
@@ -244,8 +258,16 @@
   }
 
   @media screen and (max-width: 1023px) {
+    width: 32rem;
     max-height: none;
+    margin: 0 auto;
+
+    border: 0;
     border-radius: 0.75rem;
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 1.125rem;
   }
 }
 
@@ -282,7 +304,10 @@
   }
 
   @media screen and (max-width: 1023px) {
+    width: 32rem;
     max-height: none;
+
+    margin: 0 auto;
     padding: 0;
     border: 0;
   }

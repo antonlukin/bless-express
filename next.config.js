@@ -1,4 +1,5 @@
-module.exports = {
+const nextSettings = {
+  output: 'export',
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.svg$/,
@@ -6,7 +7,12 @@ module.exports = {
     });
     return config;
   },
-  async rewrites() {
+}
+
+if (process.env.LOCAL_SERVER) {
+  delete nextSettings.output
+
+  nextSettings.rewrites = async () => {
     return [
       {
         source: '/share/:path*',
@@ -15,3 +21,5 @@ module.exports = {
     ]
   }
 }
+
+module.exports = nextSettings

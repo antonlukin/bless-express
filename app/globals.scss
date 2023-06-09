@@ -16,10 +16,6 @@ body {
 
 html {
   font: normal 16px/1.5 var(--font-serif);
-
-  @media screen and (max-width: 479px) {
-    font-size: 14px;
-  }
 }
 
 body {

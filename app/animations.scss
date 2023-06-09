@@ -53,3 +53,25 @@
     background-color: rgb(var(--color-secondary));
   }
 }
+
+@keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(0.25rem);
+  }
+
+  50% {
+    transform: translateX(-0.25rem);
+  }
+
+  75% {
+    transform: translateX(0.25rem);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+ }

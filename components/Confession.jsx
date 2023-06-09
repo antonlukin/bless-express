@@ -53,8 +53,9 @@ const Confession = ({setScreen, setResults}) => {
             placeholder='My sin...'
             onChange={(e) => {
               setFields({...fields, message: e.target.value})
+              setErrors({})
             }}
-            data-error={errors.message ? '' : null}
+            className={errors.message ? styles.error : null}
           />
         </p>
 
@@ -65,8 +66,9 @@ const Confession = ({setScreen, setResults}) => {
             placeholder='Send it by email'
             onChange={(e) => {
               setFields({...fields, email: e.target.value})
+              setErrors({})
             }}
-            data-error={errors.email ? '' : null}
+            className={errors.email ? styles.error : null}
           />
         </p>
 
