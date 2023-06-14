@@ -11,13 +11,11 @@ const Header = ({isFixed}) => {
   return (
     <header className={classes.join(' ')}>
       <div className={styles.inner}>
-        <h1 className={styles.logo}>
-          <Link href='/'>BND</Link>
-        </h1>
+        <h1 className={styles.logo}>BND</h1>
 
         <nav className={styles.menu}>
           <Link href='/manifest'>Manifest</Link>
-          <Link href='/'>Get Indulgence</Link>
+          <Link href='/'>Receive Indulgence</Link>
 
           <p>
             <span>Created by </span>

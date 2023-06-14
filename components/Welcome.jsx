@@ -11,6 +11,16 @@ const Welcome = ({setScreen}) => {
   const ref = useRef(null)
 
   useEffect(() => {
+    const title = ref.current.querySelector(`.${styles.title}`)
+    title.classList.add(styles.visible)
+
+    setTimeout(() => {
+      const description = ref.current.querySelector(`.${styles.description}`)
+      description.classList.add(styles.visible)
+    }, 600)
+  })
+
+  useEffect(() => {
     // Get all description elements
     const texts = ref.current.querySelectorAll(`.${styles.description} p`)
 

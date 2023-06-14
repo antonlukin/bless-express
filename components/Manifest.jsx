@@ -1,11 +1,63 @@
-import Header from './Header'
+'use client'
 
+import { useEffect, useRef } from 'react'
+
+import Link from 'next/link'
+import Header from './Header'
+import Button from './Button'
 import TitleImage from '../public/decor/manifest-title.svg'
 import styles from './Manifest.module.scss'
 
 const Manifest = () => {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const view = Math.max(document.documentElement.clientHeight, window.innerHeight)
+
+    const title = ref.current.querySelector(`.${styles.title}`)
+    title.classList.add(styles.visible)
+
+    const summary = ref.current.querySelector(`.${styles.summary}`)
+
+    setTimeout(() => {
+      summary.classList.add(styles.visible)
+    }, 400)
+
+    const about = ref.current.querySelector(`.${styles.about}`)
+
+    // Get all hints figures
+    const hints = ref.current.querySelectorAll(`.${styles.hints} figure`)
+
+    const scrollHandler = () => {
+      const rTitle = title.getBoundingClientRect()
+      title.classList.add(styles.visible)
+
+      if ((rTitle.height / 2) + rTitle.top <= 0) {
+        title.classList.remove(styles.visible)
+      }
+
+      const rAbout = about.getBoundingClientRect()
+
+      if (rAbout.top < view / 1.5) {
+        about.classList.add(styles.visible)
+      }
+
+      hints.forEach(hint => {
+        const rect = hint.getBoundingClientRect()
+
+        if (rect.top + rect.height - view <= 80) {
+          hint.classList.add(styles.visible)
+        }
+      })
+    }
+
+    window.addEventListener('scroll', scrollHandler)
+
+    scrollHandler()
+  })
+
   return (
-    <section className={styles.wrapper}>
+    <section className={styles.wrapper} ref={ref}>
       <Header />
 
       <h2 className={styles.title} aria-label='Manifest'>
@@ -24,6 +76,10 @@ const Manifest = () => {
           <p>Every feeling is normal.</p>
           <p>Feeling sorry for some silly trick, rude words, cruel deeds, or inaction is normal, too.</p>
           <p>You can’t change what happened, but you can let it go. That’s why we, a gang of creative and highly sensitive types from Tiger Soda agency, made this site. Indulgence will become tangible proof that from now on you are free to live your better life. Share the technique with those who need it, and let’s make the world a better place together!</p>
+
+          <p>
+            <Link className={styles.button} href='/'>Receive indulgence</Link>
+          </p>
         </div>
 
         <div className={styles.hints}>

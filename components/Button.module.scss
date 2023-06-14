@@ -1,6 +1,8 @@
-.inner {
+.button {
   cursor: pointer;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 
   height: 3.75rem;
