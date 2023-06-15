@@ -38,3 +38,4 @@ share/vendor/
 share/composer.lock
 share/posters/
 share/database/users.db
+share/.env

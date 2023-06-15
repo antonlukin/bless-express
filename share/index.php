@@ -25,7 +25,7 @@ final class Sharing
     /**
      * Url to project home page.
      */
-    public $url = '/';
+    public $url = null;
 
     /**
      * Current file directory.
@@ -112,14 +112,133 @@ final class Sharing
             $this->db = new PDO('sqlite://' . __DIR__ . '/database/users.db');
 
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 
-            $this->db->query("CREATE TABLE IF NOT EXISTS users (name TEXT, number TEXT, lang TEXT, key TEXT, created TEXT)");
+            $this->db->query('CREATE TABLE IF NOT EXISTS "users" (
+                "key" text NOT NULL,
+                "message" text NOT NULL,
+                "email" text NULL,
+                "name" text NULL,
+                "sent" integer NOT NULL DEFAULT "0",
+                "blocked" integer NOT NULL DEFAULT "0",
+                "created" text NULL
+            )');
         } catch(Exception $e) {
            $this->send_json_error('Database connection error', 500);
         }
 
         return $this->db;
+    }
+
+    /**
+     * Check if this message has bad words
+     * Honestly this functions is useless
+     */
+    private function check_blocked($message) {
+        $message = strtolower($message);
+        $words = str_getcsv(file_get_contents(__DIR__ . '/stopwords.csv'), ',');
+
+        foreach ($words as $word) {
+            $pos = mb_strpos($message, $word);
+
+            if ($pos === false) {
+                continue;
+            }
+
+            if ($pos === 0 || $message[$pos - 1] === ' ') {
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * Insert new user
+     */
+    private function insert_user($data) {
+        $db = $this->connect_database();
+
+        // Get current datetime
+        $created = date('Y-m-d H:i:s');
+
+        // Check if this message has bad words
+        $blocked = $this->check_blocked($data->message);
+
+        try {
+            $insert = $db->prepare('INSERT INTO users (key, message, email, name, blocked, created) VALUES (?, ?, ?, ?, ?, ?)');
+            $insert->execute(array($data->key, $data->message, $data->email, $data->name, $blocked, $created));
+        } catch(Exception $e) {
+            // Not inserted? No problem
+        }
+    }
+
+    /**
+     * Get non blocked users from database
+     */
+    private function get_users() {
+        $db = $this->connect_database();
+
+        try {
+            $select = $db->query('SELECT rowid AS id, message, name FROM users WHERE blocked = 0 ORDER BY rowid DESC LIMIT 50');
+            $results = $select->fetchAll();
+        } catch(Exception $e) {
+           $this->send_json_error('Error occured while selecting standings from database', 500);
+        }
+
+        foreach ($results as $result) {
+            $name = $result->id % 43;
+            $result->image = "/others/{$name}.jpg";
+        }
+
+        return $results;
+    }
+
+    /**
+     * Upload and generate posters from JSON data
+     */
+    private function create_posters($data) {
+        try {
+            $story = new PosterEditor();
+            $story->make(__DIR__ . '/assets/story.png');
+
+            $story->text($data->message, array(
+                'x' => 136,
+                'y' => 1508,
+                'width' => 810,
+                'height' => 360,
+                'fontpath'   => $this->dir . '/assets/seagram.ttf',
+                'fontsize'   => 36,
+                'lineheight' => 1.75,
+                'horizontal' => 'center',
+                'color'      => '#ffffff',
+            ));
+
+            $story->save($this->dir . "/posters/story-{$data->key}.jpg", 80);
+            $data->story = $this->url . "/share/posters/story-{$data->key}.jpg";
+
+            $poster = new PosterEditor();
+            $poster->make(__DIR__ . '/assets/poster.png');
+
+            $poster->text($data->message, array(
+                'x' => 58,
+                'y' => 100,
+                'width' => 290,
+                'height' => 520,
+                'fontpath'   => $this->dir . '/assets/seagram.ttf',
+                'fontsize'   => 16,
+                'lineheight' => 1.75,
+                'horizontal' => 'left',
+                'color'      => '#ffffff',
+            ));
+
+            $poster->save($this->dir . "/posters/poster-{$data->key}.jpg", 80);
+            $data->poster = $this->url . "/share/posters/poster-{$data->key}.jpg";
+        } catch(Exception $e) {
+            $this->send_json_error('Failed to save poster');
+        }
+
+        return $data;
     }
 
     /**
@@ -132,26 +251,27 @@ final class Sharing
             $this->send_json_error('Text cannot be empty', 400);
         }
 
-        $response = [
-        ];
-
-        $this->send_json_success($response);
-    }
-
-    /**
-     * Get others sin list
-     */
-    private function get_list() {
-        $db = $this->connect_database();
-
-        try {
-            $select = $db->query('SELECT name, number FROM users ORDER BY rowid DESC');
-            $results = $select->fetchAll();
-        } catch(Exception $e) {
-           $this->send_json_error('Error occured while selecting standings from database', 500);
+        if (mb_strlen($data->message) > 300) {
+            $data->message = mb_substr($data->message, 0, 300) . "...";
         }
 
-        $this->send_json_success($results);
+        if (!empty($data->anonym) || empty($data->name)) {
+            $data->name = 'Anonymous';
+        }
+
+        if (!isset($data->email) || !filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
+            $data->email = '';
+        }
+
+        $data->key = $this->get_unique_key();
+
+        $this->insert_user($data);
+        $this->create_posters($data);
+
+        // Get a list of users
+        $data->users = $this->get_users();
+
+        $this->send_json_success($data);
     }
 
     /**
@@ -162,10 +282,6 @@ final class Sharing
     private function route_request($action) {
         if ('submit' === $action) {
             return $this->submit_data();
-        }
-
-        if ('list' === $action) {
-            return $this->get_list();
         }
 
 //        $this->show_tags($action);
@@ -180,10 +296,9 @@ final class Sharing
         $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
         $dotenv->load();
 
-        if (isset($_ENV['REACT_APP_PROJECT_URL'])) {
-            $this->url = $_ENV['REACT_APP_PROJECT_URL'];
-        }
+        $this->url = rtrim($_ENV['SITE_URL'], '/');
 
+        // Parse request args
         $args = explode('/', trim($request, '/'));
 
         if (empty($args[1])) {
