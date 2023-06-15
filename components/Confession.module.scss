@@ -107,6 +107,12 @@
     border: solid 2px transparent;
     border-radius: 1rem;
 
+    transition: opacity 0.25s;
+
+    &.hidden {
+      opacity: 0;
+    }
+
     &::placeholder {
       color: rgb(var(--color-white));
     }
@@ -143,6 +149,14 @@
 
   @media screen and (max-width: 479px) {
     padding: 1rem 0;
+  }
+}
+
+.loader {
+  pointer-events: none;
+
+  .form, .caption {
+    filter: blur(1px);
   }
 }
 

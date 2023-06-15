@@ -9,6 +9,8 @@ import styles from './Confession.module.scss'
 const Confession = ({setScreen, setResults}) => {
   const [fields, setFields] = useState({message: '', email: '', name: ''})
   const [errors, setErrors] = useState({})
+  const [anonym, setAnonym] = useState(false)
+  const [loader, setLoader] = useState(false)
 
   const submitForm = async (e) => {
     e.preventDefault()
@@ -22,26 +24,43 @@ const Confession = ({setScreen, setResults}) => {
         return setErrors({...errors, email: true})
       }
 
+      setLoader(true)
+
+      // Create request data from fields
+      const data = {...fields, anonym: Number(anonym)}
+
       const response = await fetch('/share/submit/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(fields)
+        body: JSON.stringify(data)
       })
 
       if (response.status === 200) {
-        return setScreen('loader')
-      }
+        const json = await response.json();
 
-      setErrors({...errors, message: true})
+        if (json.data) {
+          setResults(json.data)
+          return setScreen('loader')
+        }
+      }
     } catch(error) {
       console.error(error)
     }
+
+    setLoader(false)
+    setErrors({...errors, message: true})
+  }
+
+  const classes = [styles.wrapper]
+
+  if (loader) {
+    classes.push(styles.loader)
   }
 
   return (
-    <section className={styles.wrapper}>
+    <section className={classes.join(' ')}>
       <Header />
 
       <h3 className={styles.caption}>What&apos;s bothering you, my child</h3>
@@ -55,6 +74,7 @@ const Confession = ({setScreen, setResults}) => {
               setFields({...fields, message: e.target.value})
               setErrors({})
             }}
+            maxLength={300}
             className={errors.message ? styles.error : null}
           />
         </p>
@@ -80,13 +100,16 @@ const Confession = ({setScreen, setResults}) => {
             onChange={(e) => {
               setFields({...fields, name: e.target.value})
             }}
+            className={anonym ? styles.hidden : null}
           />
         </p>
 
         <label className={styles.switcher}>
           <strong>Anonymous</strong>
 
-          <input type="checkbox" />
+          <input type="checkbox" onChange={(e) => {
+            setAnonym(e.target.checked)
+          }} />
           <span>Toggle</span>
         </label>
 

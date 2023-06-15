@@ -5,6 +5,8 @@ import Button from './Button'
 import styles from './Final.module.scss'
 
 const Final = ({results}) => {
+  console.log(results)
+
   return (
     <section className={styles.wrapper}>
       <Header />
@@ -39,21 +41,21 @@ const Final = ({results}) => {
         <figure>
           <figcaption>Type of sin</figcaption>
 
-          <p>Did you say something you regret? Did you vote for Trump or accidentally kicked a colleague, and now you are tormented in agony</p>
+          <p>{results.message}</p>
         </figure>
       </div>
 
       <div className={styles.others}>
-        {results && results.map((result, i) =>
+        {results.users && results.users.map((user, i) =>
           <figure className={styles.item} key={i}>
             <picture>
-              <source srcSet={result.image} type="image/jpeg" />
-              <img src={result.image} alt={result.message} width={300} height={300} />
+              <source srcSet={user.image} type="image/jpeg" />
+              <img src={user.image} alt={user.message} width={300} height={300} />
             </picture>
 
             <figcaption>
-              <h5>{result.message}</h5>
-              <p>{result.name}</p>
+              <h5>{user.message}</h5>
+              <p>{user.name}</p>
             </figcaption>
           </figure>
         )}

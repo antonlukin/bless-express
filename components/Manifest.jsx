@@ -52,8 +52,6 @@ const Manifest = () => {
     }
 
     window.addEventListener('scroll', scrollHandler)
-
-    scrollHandler()
   })
 
   return (
