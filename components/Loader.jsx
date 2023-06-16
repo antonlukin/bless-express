@@ -10,7 +10,6 @@ const Loader = ({setScreen}) => {
     }
 
     setTimeout(showFinal, 5000)
-    showFinal()
   }, [setScreen])
 
   return (
