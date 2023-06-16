@@ -325,7 +325,7 @@
   opacity: 0;
   transform: translateY(2rem);
 
-  transition: opacity 1s 0.5s, transform 1s 0.5s;
+  transition: opacity 1.5s 1s, transform 1.5s 1s;
 
   &.appear {
     opacity: 1;
@@ -367,7 +367,7 @@
   }
 
   svg path {
-    transition: fill 1s 1s;
+    transition: fill 1s 1.5s;
   }
 
   p {

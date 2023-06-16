@@ -68,7 +68,7 @@ const Welcome = ({setScreen}) => {
 
     setTimeout(() => {
       setScreen('confession')
-    }, 2000)
+    }, 3500)
   }
 
   return (
