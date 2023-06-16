@@ -133,9 +133,16 @@ final class Sharing
     /**
      * Check if this message has bad words
      * Honestly this functions is useless
+     *
+     * @param string $message User's message from request
      */
     private function check_blocked($message) {
         $message = strtolower($message);
+
+        if (!file_exists(__DIR__ . '/stopwords.csv')) {
+            return 0;
+        }
+
         $words = str_getcsv(file_get_contents(__DIR__ . '/stopwords.csv'), ',');
 
         foreach ($words as $word) {
@@ -155,6 +162,8 @@ final class Sharing
 
     /**
      * Insert new user
+     *
+     * @param object $data User's data from request.
      */
     private function insert_user($data) {
         $db = $this->connect_database();
@@ -196,6 +205,8 @@ final class Sharing
 
     /**
      * Upload and generate posters from JSON data
+     *
+     * @param object $data User's data from request.
      */
     private function create_posters($data) {
         try {
@@ -215,7 +226,6 @@ final class Sharing
             ));
 
             $story->save($this->dir . "/posters/story-{$data->key}.jpg", 80);
-            $data->story = $this->url . "/share/posters/story-{$data->key}.jpg";
 
             $poster = new PosterEditor();
             $poster->make(__DIR__ . '/assets/poster.png');
@@ -233,10 +243,12 @@ final class Sharing
             ));
 
             $poster->save($this->dir . "/posters/poster-{$data->key}.jpg", 80);
-            $data->poster = $this->url . "/share/posters/poster-{$data->key}.jpg";
         } catch(Exception $e) {
             $this->send_json_error('Failed to save poster');
         }
+
+        $data->story = $this->url . "/share/posters/story-{$data->key}.jpg";
+        $data->link = $this->url . "/share/{$data->key}";
 
         return $data;
     }
@@ -275,6 +287,27 @@ final class Sharing
     }
 
     /**
+     * Show tags template.
+     *
+     * @param string $name Poster name.
+     */
+    private function show_tags($name) {
+        if (!file_exists($this->dir . "/posters/poster-{$name}.jpg")) {
+            $this->redirect_page($this->url);
+        }
+
+        $meta = array(
+            'poster'      => $this->url . "/share/posters/poster-{$name}.jpg",
+            'title'       => 'Guilt-Free and Loving It!',
+            'description' => 'Just received my indulgence. Ready to get yours?',
+        );
+
+        extract($meta);
+
+        include_once __DIR__ . '/assets/page.php';
+    }
+
+    /**
      * Routing an incoming request.
      *
      * @param string $action Request control parameter.
@@ -284,7 +317,7 @@ final class Sharing
             return $this->submit_data();
         }
 
-//        $this->show_tags($action);
+        $this->show_tags($action);
     }
 
     /**
@@ -293,7 +326,7 @@ final class Sharing
      * @param string $request Request URI.
      */
     public function init($request) {
-        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__), '.env.local');
         $dotenv->load();
 
         $this->url = rtrim($_ENV['SITE_URL'], '/');
