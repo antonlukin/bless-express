@@ -7,6 +7,11 @@ import styles from './Final.module.scss'
 const Final = ({results}) => {
   console.log(results)
 
+  const setClipboard = async (e) => {
+    await navigator.clipboard.writeText(results.link);
+    e.target.textContent = 'Copied!'
+  }
+
   return (
     <section className={styles.wrapper}>
       <Header />
@@ -17,9 +22,12 @@ const Final = ({results}) => {
         <strong>Share your indulgence</strong>
 
         <figure>
-          <Button type='button'>Inst</Button>
-          <Button type='button'>Fb</Button>
-          <Button type='button'>Copy link</Button>
+          <a className={styles.button} href={results.story} download='story.jpg'>Inst</a>
+          <a className={styles.button} href={results.link}>Fb</a>
+          <Button
+            type='button'
+            onClick={setClipboard}
+          >Copy link</Button>
         </figure>
       </div>
 
@@ -30,7 +38,7 @@ const Final = ({results}) => {
 
         <blockquote>
           <p>
-            This indulgence is granted by Tiger Soda creative agency. We believe that everyone deserves a chance to move on from their past mistakes and start anew.
+          This indulgence is granted by Tiger Soda creative agency. We believe that everyone deserves a chance to move on from their past mistakes and start anew.
             <br />
             Carry this indulgence with you as a reminder of your freedom from guilt and shame.
           </p>
@@ -39,7 +47,7 @@ const Final = ({results}) => {
         </blockquote>
 
         <figure>
-          <figcaption>Type of sin</figcaption>
+          <figcaption>Type of Sin</figcaption>
 
           <p>{results.message}</p>
         </figure>

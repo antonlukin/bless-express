@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react'
 
 import Link from 'next/link'
 import Header from './Header'
-import Button from './Button'
 import TitleImage from '../public/decor/manifest-title.svg'
 import styles from './Manifest.module.scss'
 

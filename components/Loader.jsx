@@ -9,7 +9,7 @@ const Loader = ({setScreen}) => {
       return setScreen('final')
     }
 
-    // setTimeout(showFinal, 5000)
+    setTimeout(showFinal, 5000)
     showFinal()
   }, [setScreen])
 
