@@ -23,7 +23,7 @@ const Final = ({results}) => {
 
         <figure>
           <a className={styles.button} href={results.story} download='story.jpg'>Inst</a>
-          <a className={styles.button} href={results.link}>Fb</a>
+          <a className={styles.button} href={'https://www.facebook.com/sharer/sharer.php?u=' + results.link} target='_blank' rel='noopener'>Fb</a>
           <Button
             type='button'
             onClick={setClipboard}
