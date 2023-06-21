@@ -3,7 +3,8 @@
 import { useEffect, useRef } from 'react'
 
 import Header from '../components/Header'
-import ArchImage from '../public/decor/church-arch.svg'
+import DoorImage from '../public/decor/church-door.svg'
+import BlurImage from '../public/decor/church-blur.svg'
 import TitleImage from '../public/decor/welcome-title.svg'
 import styles from './Welcome.module.scss'
 
@@ -61,19 +62,25 @@ const Welcome = ({setScreen}) => {
     ref.current.addEventListener('scroll', scrollHandler)
   }, [])
 
+  const updateScreen = () => {
+    ref.current.classList.add(styles.transition)
+
+    setTimeout(() => {
+      setScreen('confession')
+    }, 1150)
+  }
+
   const showTransition = () => {
     const vitral = ref.current.querySelector(`.${styles.vitral}`)
 
     vitral.classList.add(styles.opened)
 
-    setTimeout(() => {
-      setScreen('confession')
-    }, 3500)
+    setTimeout(updateScreen, 850)
   }
 
   return (
     <section className={styles.wrapper} ref={ref}>
-      <Header isFixed={true} />
+      <Header isFixed={true} setScreen={setScreen} />
 
       <div className={styles.start}>
         <div className={styles.description}>
@@ -135,8 +142,9 @@ const Welcome = ({setScreen}) => {
             <img src="/decor/church-2.jpg" alt="Church image" width={420} height={1210} />
           </picture>
 
-          <figure className={styles.door} onClick={showTransition} role='button'>
-            <ArchImage />
+          <figure className={styles.arch} onClick={showTransition} role='button'>
+            <DoorImage className={styles.door} />
+            <BlurImage className={styles.blur} />
 
             <p>Knock when you are ready</p>
           </figure>

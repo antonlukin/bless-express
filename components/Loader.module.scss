@@ -1,6 +1,14 @@
 @import '../app/animations.scss';
 
 .wrapper {
+  display: block;
+  position: relative;
+
+  color: rgb(var(--color-black));
+  background-color: rgb(var(--color-white));
+}
+
+.inner {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;

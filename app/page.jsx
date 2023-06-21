@@ -33,7 +33,7 @@ export default function Home() {
 
       {screen === 'final' &&
         <>
-          <Final results={results} />
+          <Final results={results} setScreen={setScreen} />
         </>
       }
     </>

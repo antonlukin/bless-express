@@ -53,6 +53,16 @@ const Confession = ({setScreen, setResults}) => {
     setErrors({...errors, message: true})
   }
 
+  const showHelper = (e) => {
+    e.preventDefault()
+
+    const figure = e.target.closest('figure')
+
+    if (figure) {
+      figure.classList.toggle(styles.visible)
+    }
+  }
+
   const classes = [styles.wrapper]
 
   if (loader) {
@@ -61,7 +71,7 @@ const Confession = ({setScreen, setResults}) => {
 
   return (
     <section className={classes.join(' ')}>
-      <Header />
+      <Header setScreen={setScreen} />
 
       <h3 className={styles.caption}>What&apos;s bothering you, my child</h3>
 
@@ -79,20 +89,7 @@ const Confession = ({setScreen, setResults}) => {
           />
         </p>
 
-        <p>
-          <input
-            value={fields.email}
-            type='text'
-            placeholder='Send it by email'
-            onChange={(e) => {
-              setFields({...fields, email: e.target.value})
-              setErrors({})
-            }}
-            className={errors.email ? styles.error : null}
-          />
-        </p>
-
-        <p>
+        <p className={anonym ? styles.hidden : null}>
           <input
             value={fields.name}
             type='text'
@@ -100,18 +97,24 @@ const Confession = ({setScreen, setResults}) => {
             onChange={(e) => {
               setFields({...fields, name: e.target.value})
             }}
-            className={anonym ? styles.hidden : null}
           />
         </p>
 
-        <label className={styles.switcher}>
-          <strong>Anonymous</strong>
+        <div className={styles.manage}>
+          <figure className={styles.helper} onClick={showHelper}>
+            <button type='button'>?</button>
+            <figcaption>Indulgence won’t mention your sin, and your name won’t be recorded in our book.</figcaption>
+          </figure>
 
-          <input type="checkbox" onChange={(e) => {
-            setAnonym(e.target.checked)
-          }} />
-          <span>Toggle</span>
-        </label>
+          <label className={styles.switcher}>
+            <strong>Anonymous</strong>
+
+            <input type="checkbox" onChange={(e) => {
+              setAnonym(e.target.checked)
+            }} />
+            <span>Toggle</span>
+          </label>
+        </div>
 
         <p>
           <Button type='submit'>Receive indulgence</Button>

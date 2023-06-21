@@ -11,6 +11,26 @@
   color: rgb(var(--color-white));
   background-color: rgb(var(--color-black));
 
+  &::before {
+    content: '';
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+    background-image: var(--gradinet-confession);
+    background-color: rgb(var(--color-secondary));
+  }
+
+  &.transition::before {
+    z-index: 2;
+    animation: fade-in 1s forwards linear;
+  }
+
   @media screen and (max-width: 1023px) {
     overflow: auto;
     scroll-snap-type: none;
@@ -325,23 +345,20 @@
   opacity: 0;
   transform: translateY(2rem);
 
-  transition: opacity 1.5s 1s, transform 1.5s 1s;
-
   &.appear {
-    opacity: 1;
-    transform: translateY(0);
+    animation: welcome-vitral 1s 0.5s linear forwards;
   }
 
-  &.opened .window {
-    opacity: 1;
+  &.appear .window {
+    animation: fade-in 1s 1.75s linear forwards;
   }
 
-  &.opened .door svg [fill="transparent"] {
-    fill: rgba(254,214,135,1);
+  &.opened .blur {
+    animation: fade-in 0.75s linear forwards;
   }
 }
 
-.door {
+.arch {
   cursor: pointer;
 
   display: flex;
@@ -352,23 +369,6 @@
   height: auto;
   margin: 0 1rem;
   padding-bottom: 2rem;
-
-  svg {
-    width: auto;
-    height: 80vh;
-
-    @media screen and (max-width: 767px) {
-      height: 60vh;
-    }
-
-    @media screen and (max-width: 479px) {
-      height: 40vh;
-    }
-  }
-
-  svg path {
-    transition: fill 1s 1.5s;
-  }
 
   p {
     display: block;
@@ -386,13 +386,47 @@
   }
 }
 
+.door {
+  width: auto;
+  height: 80vh;
+
+  path {
+    transition: fill 0.5s;
+  }
+
+  &:hover path[fill="transparent"] {
+    fill: rgba(254,214,135,1);
+    transition: fill 1s;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 60vh;
+  }
+
+  @media screen and (max-width: 479px) {
+    height: 40vh;
+  }
+}
+
+.blur {
+  pointer-events: none;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 200%;
+  height: 200%;
+  opacity: 0;
+
+  transform: translate(-50%, -50%);
+}
+
 .window {
   display: block;
 
   margin: 0 1rem;
   opacity: 0;
-
-  transition: opacity 1.25s;
 
   img {
     display: block;

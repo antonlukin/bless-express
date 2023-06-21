@@ -104,6 +104,18 @@
   }
 }
 
+@keyframes welcome-vitral {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes welcome-description {
   0% {
     transform: translateY(50%);
@@ -143,5 +155,19 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes final-left {
+  0% {
+    left: -125%;
+  }
+
+  50% {
+    left: 300%;
+  }
+
+  100% {
+    left: 300%;
   }
 }

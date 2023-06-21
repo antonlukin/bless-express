@@ -263,16 +263,16 @@ final class Sharing
             $this->send_json_error('Text cannot be empty', 400);
         }
 
+        $data->message = strip_tags($data->message);
+
         if (mb_strlen($data->message) > 300) {
             $data->message = mb_substr($data->message, 0, 300) . "...";
         }
 
+        $data->name = strip_tags($data->name);
+
         if (!empty($data->anonym) || empty($data->name)) {
             $data->name = 'Anonymous';
-        }
-
-        if (!isset($data->email) || !filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
-            $data->email = '';
         }
 
         $data->key = $this->get_unique_key();

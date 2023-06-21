@@ -9,16 +9,18 @@ const Loader = ({setScreen}) => {
       return setScreen('final')
     }
 
-    setTimeout(showFinal, 5000)
+    setTimeout(showFinal, 50) //5000
   }, [setScreen])
 
   return (
     <section className={styles.wrapper}>
-      <figure className={styles.frog}></figure>
+      <div className={styles.inner}>
+        <figure className={styles.frog}></figure>
 
-      <p className={styles.title}>
-        Blessing your indulgence
-      </p>
+        <p className={styles.title}>
+          Blessing your indulgence
+        </p>
+      </div>
     </section>
   )
 }
