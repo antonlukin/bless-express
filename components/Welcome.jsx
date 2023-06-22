@@ -12,6 +12,10 @@ const Welcome = ({setScreen}) => {
   const ref = useRef(null)
 
   useEffect(() => {
+    window.history.scrollRestoration = 'manual'
+  }, []);
+
+  useEffect(() => {
     const title = ref.current.querySelector(`.${styles.title}`)
     title.classList.add(styles.visible)
 
@@ -59,7 +63,7 @@ const Welcome = ({setScreen}) => {
       }
     }
 
-    ref.current.addEventListener('scroll', scrollHandler)
+    window.addEventListener('scroll', scrollHandler)
   }, [])
 
   const updateScreen = () => {

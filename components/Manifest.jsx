@@ -74,10 +74,6 @@ const Manifest = ({setScreen}) => {
             <p>Every feeling is normal.</p>
             <p>Feeling sorry for some silly trick, rude words, cruel deeds, or inaction is normal, too.</p>
             <p>You can’t change what happened, but you can let it go. That’s why we, a gang of creative and highly sensitive types from Tiger Soda agency, made this site. Indulgence will become tangible proof that from now on you are free to live your better life. Share the technique with those who need it, and let’s make the world a better place together!</p>
-
-            <p>
-              <Link className={styles.button} href='/'>Receive indulgence</Link>
-            </p>
           </div>
 
           <div className={styles.hints}>
@@ -113,6 +109,10 @@ const Manifest = ({setScreen}) => {
                 <h5>It is okay to sit on the toilet in tiktok</h5>
               </figcaption>
             </figure>
+          </div>
+
+          <div className={styles.receive}>
+            <Link className={styles.button} href='/'>Receive indulgence</Link>
           </div>
         </div>
       </div>

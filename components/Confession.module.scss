@@ -289,14 +289,16 @@
   }
 
   figcaption {
-    display: none;
+    display: block;
     position: absolute;
+    pointer-events: none;
     z-index: 5;
 
     width: 12.5rem;
     max-width: 100%;
     margin: 0;
     padding: 0.75rem 1rem;
+    opacity: 0;
 
     font-family: var(--font-sans);
     line-height: 1.25;
@@ -306,6 +308,8 @@
 
     transform: translate(calc(-50% + 0.75rem), 1rem);
     border-radius: 0.5rem;
+
+    transition: opacity 0.5s;
 
     &::before {
       content: '';
@@ -322,9 +326,8 @@
       transform: rotate(45deg);
       background-color: rgb(var(--color-black));
 
-
       @media screen and (max-width: 767px) {
-        left: 1rem;
+        display: none
       }
     }
 
@@ -333,7 +336,7 @@
     }
   }
 
-  &.visible figcaption {
-    display: block;
+  &:hover figcaption {
+    opacity: 1;
   }
 }

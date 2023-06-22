@@ -59,7 +59,7 @@
     opacity: 1;
   }
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 1023px) {
     margin-top: 2.5rem;
   }
 }
@@ -99,7 +99,7 @@
 .about {
   display: grid;
   grid-template-columns: 20rem 1fr;
-  gap: 6.75rem;
+  grid-gap: 2rem 6.75rem;
   position: relative;
 
   width: 100%;
@@ -136,6 +136,10 @@
 
   p {
     margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   @media screen and (max-width: 767px) {
@@ -170,7 +174,7 @@
   display: block;
   position: relative;
 
-  width: 16rem;
+  width: 14.25rem;
   opacity: 0;
 
   picture {
@@ -285,10 +289,10 @@
   }
 }
 
-.link {
-  display: block;
+.receive {
+  grid-column: 1;
 
-  button {
-    width: 100%;
+  @media screen and (max-width: 767px) {
+    grid-column: 1 / 3;
   }
 }

@@ -53,16 +53,6 @@ const Confession = ({setScreen, setResults}) => {
     setErrors({...errors, message: true})
   }
 
-  const showHelper = (e) => {
-    e.preventDefault()
-
-    const figure = e.target.closest('figure')
-
-    if (figure) {
-      figure.classList.toggle(styles.visible)
-    }
-  }
-
   const classes = [styles.wrapper]
 
   if (loader) {
@@ -101,7 +91,7 @@ const Confession = ({setScreen, setResults}) => {
         </p>
 
         <div className={styles.manage}>
-          <figure className={styles.helper} onClick={showHelper}>
+          <figure className={styles.helper}>
             <button type='button'>?</button>
             <figcaption>Indulgence won’t mention your sin, and your name won’t be recorded in our book.</figcaption>
           </figure>

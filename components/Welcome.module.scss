@@ -4,10 +4,6 @@
   display: block;
   position: relative;
 
-  max-height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-
   color: rgb(var(--color-white));
   background-color: rgb(var(--color-black));
 
@@ -34,11 +30,6 @@
     z-index: 2;
     animation: fade-in 1s forwards linear;
   }
-
-  @media screen and (max-width: 1023px) {
-    overflow: auto;
-    scroll-snap-type: none;
-  }
 }
 
 .start {
@@ -52,15 +43,10 @@
   margin: 0 auto;
   padding: 8vh 2rem 2rem;
 
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-
   @media screen and (max-width: 1023px) {
     flex-flow: column nowrap;
     align-items: center;
-
     height: auto;
-    scroll-snap-stop: normal;
   }
 
   @media screen and (max-width: 479px) {
@@ -81,13 +67,6 @@
   overflow: hidden;
   padding: 4rem 2rem 0;
 
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-
-  @media screen and (max-width: 1023px) {
-    scroll-snap-stop: normal;
-  }
-
   @media screen and (max-width: 479px) {
     padding: 4rem 1rem 0;
   }
@@ -104,7 +83,7 @@
   font-size: 1.5rem;
   line-height: 1.25;
 
-  transform: translateY(50%);
+  transform: translateY(40%);
 
   a {
     border-bottom: solid 1px;
@@ -155,7 +134,7 @@
   }
 
   &.visible {
-    animation: welcome-description 1s forwards;
+    animation: welcome-description 1.5s forwards;
   }
 
   @media screen and (max-width: 1023px) {
@@ -234,7 +213,7 @@
   position: relative;
 
   height: 32rem;
-  margin: 1.25rem 0 45vh;
+  margin: 1.25rem 0 10vh;
 
   @media screen and (max-width: 1023px) {
     height: 24rem;
