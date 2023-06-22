@@ -39,7 +39,14 @@
 
 .logo {
   display: block;
+
+  padding-left: 2.75rem;
   font-size: 1.5rem;
+
+  background-image: url('/decor/logo.png');
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 2rem auto;
 
   a {
     transition: opacity 0.25s;

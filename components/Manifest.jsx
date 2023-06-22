@@ -7,7 +7,7 @@ import Header from './Header'
 import TitleImage from '../public/decor/manifest-title.svg'
 import styles from './Manifest.module.scss'
 
-const Manifest = () => {
+const Manifest = ({setScreen}) => {
   const ref = useRef(null)
 
   useEffect(() => {

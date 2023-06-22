@@ -26,6 +26,10 @@
     background-color: rgb(var(--color-secondary));
   }
 
+  &.transition header {
+    opacity: 0;
+  }
+
   &.transition::before {
     z-index: 2;
     animation: fade-in 1s forwards linear;

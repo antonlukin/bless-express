@@ -3,6 +3,10 @@ import styles from './Header.module.scss'
 
 const Header = ({isFixed, setScreen}) => {
   const returnHome = (e) => {
+    if (!setScreen) {
+      return
+    }
+
     e.preventDefault()
 
     setScreen('welcome')
