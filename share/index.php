@@ -204,11 +204,27 @@ final class Sharing
     }
 
     /**
+     * Get anonymous poster
+     *
+     * @param object $data User's data from request.
+     */
+    private function get_anonymous_poster($data) {
+        $data->story = $this->url . '/share/anonymous/story.png';
+        $data->link = $this->url . '/share/';
+
+        return $data;
+    }
+
+    /**
      * Upload and generate posters from JSON data
      *
      * @param object $data User's data from request.
      */
     private function create_posters($data) {
+        if (!empty($data->anonym)) {
+            return $this->get_anonymous_poster($data);
+        }
+
         try {
             $story = new PosterEditor();
             $story->make(__DIR__ . '/assets/story.png');
@@ -269,10 +285,12 @@ final class Sharing
             $data->message = mb_substr($data->message, 0, 300) . "...";
         }
 
-        $data->name = strip_tags($data->name);
-
         if (!empty($data->anonym) || empty($data->name)) {
             $data->name = 'Anonymous';
+        }
+
+        if (mb_strlen($data->name) > 100) {
+            $data->name = mb_substr(strip_tags($data->name), 0, 100) . "...";
         }
 
         $data->key = $this->get_unique_key();
@@ -287,13 +305,34 @@ final class Sharing
     }
 
     /**
+     * Show anonymous template
+     *
+     * @param string $name Poster name.
+     */
+    private function show_anonymous() {
+        $meta = array(
+            'poster'      => $this->url . '/share/anonymous/poster.png',
+            'title'       => 'Guilt-Free and Loving It!',
+            'description' => 'Just received my indulgence. Ready to get yours?',
+        );
+
+        extract($meta);
+
+        include_once __DIR__ . '/assets/page.php';
+    }
+
+    /**
      * Show tags template.
      *
      * @param string $name Poster name.
      */
     private function show_tags($name) {
+        if (empty($name)) {
+            return $this->show_anonymous();
+        }
+
         if (!file_exists($this->dir . "/posters/poster-{$name}.jpg")) {
-            $this->redirect_page($this->url);
+            return $this->redirect_page($this->url);
         }
 
         $meta = array(
@@ -333,10 +372,6 @@ final class Sharing
 
         // Parse request args
         $args = explode('/', trim($request, '/'));
-
-        if (empty($args[1])) {
-            $this->redirect_page($this->url);
-        }
 
         $this->route_request($args[1]);
     }

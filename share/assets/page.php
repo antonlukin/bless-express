@@ -10,16 +10,16 @@
 
     <meta property="og:title" content="<?php echo $title; ?>">
     <meta property="og:description" content="<?php echo $description; ?>">
-    <meta property="og:image" content="<?php echo $poster ?>">
+    <meta property="og:image" content="<?php echo $poster; ?>">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="<?php echo $poster ?>">
+    <meta name="twitter:image" content="<?php echo $poster; ?>">
 
     <title><?php echo $title; ?></title>
 </head>
 <body>
     <script type="text/javascript">
-        window.location.href = '<?php echo $this->url ?>'
+        window.location.href = '<?php echo $this->url; ?>'
     </script>
 </body>
 </html>
