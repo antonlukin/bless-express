@@ -8,7 +8,7 @@ import BlurImage from '../public/decor/church-blur.svg'
 import TitleImage from '../public/decor/welcome-title.svg'
 import styles from './Welcome.module.scss'
 
-const Welcome = ({setScreen}) => {
+const Welcome = ({setScreen, sounds}) => {
   const ref = useRef(null)
 
   const updateScreen = () => {
@@ -23,12 +23,15 @@ const Welcome = ({setScreen}) => {
     const vitral = ref.current.querySelector(`.${styles.vitral}`)
     vitral.classList.add(styles.opened)
 
+    // Play knock sound on door click
+    sounds.knock.play()
+
     setTimeout(updateScreen, 850)
   }
 
   useEffect(() => {
     window.history.scrollRestoration = 'manual'
-  }, []);
+  }, [])
 
   useEffect(() => {
     const title = ref.current.querySelector(`.${styles.title}`)

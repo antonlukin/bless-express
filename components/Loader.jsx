@@ -3,14 +3,16 @@
 import { useEffect } from 'react'
 import styles from './Loader.module.scss'
 
-const Loader = ({setScreen}) => {
+const Loader = ({setScreen, sounds}) => {
   useEffect(() => {
+    sounds.aaa.play()
+
     const showFinal = () => {
       return setScreen('final')
     }
 
-    setTimeout(showFinal, 5000)
-  }, [setScreen])
+    setTimeout(showFinal, 4500)
+  }, [setScreen, sounds])
 
   return (
     <section className={styles.wrapper}>

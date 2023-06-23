@@ -10,6 +10,17 @@ import Final from '../components/Final'
 export default function Home() {
   const [screen, setScreen] = useState('welcome')
   const [results, setResults] = useState({})
+  const [sounds, setSounds] = useState({})
+
+  useEffect(() => {
+    const aaa = document.createElement('audio')
+    aaa.src = '/sounds/aaa.mp3'
+
+    const knock = document.createElement('audio')
+    knock.src = '/sounds/knock.mp3'
+
+    setSounds({aaa, knock})
+  }, [])
 
   useEffect(() => {
     if (document.location.hash === '#receive') {
@@ -22,7 +33,7 @@ export default function Home() {
     <>
       {screen === 'welcome' &&
         <>
-          <Welcome setScreen={setScreen} />
+          <Welcome setScreen={setScreen} sounds={sounds} />
         </>
       }
 
@@ -34,7 +45,7 @@ export default function Home() {
 
       {screen === 'loader' &&
         <>
-          <Loader setScreen={setScreen} />
+          <Loader setScreen={setScreen} sounds={sounds} />
         </>
       }
 

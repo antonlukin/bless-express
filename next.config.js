@@ -16,7 +16,7 @@ if (process.env.LOCAL_SERVER) {
     return [
       {
         source: '/share/:path*',
-        destination: 'https://bless.notset.org/share/:path*',
+        destination: 'https://bless.express/share/:path*',
       },
     ]
   }
