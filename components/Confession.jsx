@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Header from '../components/Header'
 import Button from './Button'
 import styles from './Confession.module.scss'
 
-const Confession = ({setScreen, setResults}) => {
+const Confession = ({setScreen, setResults, sounds}) => {
   const [fields, setFields] = useState({message: '', email: '', name: ''})
   const [errors, setErrors] = useState({})
   const [anonym, setAnonym] = useState(false)
@@ -41,7 +41,9 @@ const Confession = ({setScreen, setResults}) => {
         const json = await response.json();
 
         if (json.data) {
+          sounds.aaa.play()
           setResults(json.data)
+
           return setScreen('loader')
         }
       }

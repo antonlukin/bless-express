@@ -39,13 +39,13 @@ export default function Home() {
 
       {screen === 'confession' &&
         <>
-          <Confession setScreen={setScreen} setResults={setResults} />
+          <Confession setScreen={setScreen} setResults={setResults} sounds={sounds} />
         </>
       }
 
       {screen === 'loader' &&
         <>
-          <Loader setScreen={setScreen} sounds={sounds} />
+          <Loader setScreen={setScreen} />
         </>
       }
 
