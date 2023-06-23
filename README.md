@@ -8,6 +8,7 @@ The instruction assumes that you have Yarn and pm2 installed globally.
 4. Build application with `yarn build`
 5. Install required packages with `composer update` in `share` directory
 6. Create directory `share/posters/` and set write permissions for web-server's user
+7. Create and make writeable database and parent folder for `share/database/users.db`
 7. Navigate webserver to `out` directory
 
 ## nginx config
