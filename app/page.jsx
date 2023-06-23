@@ -8,7 +8,7 @@ import Loader from '../components/Loader'
 import Final from '../components/Final'
 
 export default function Home() {
-  const [screen, setScreen] = useState('final')
+  const [screen, setScreen] = useState('welcome')
   const [results, setResults] = useState({})
 
   useEffect(() => {
