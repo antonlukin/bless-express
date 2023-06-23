@@ -8,8 +8,15 @@ import Loader from '../components/Loader'
 import Final from '../components/Final'
 
 export default function Home() {
-  const [screen, setScreen] = useState('welcome')
+  const [screen, setScreen] = useState('final')
   const [results, setResults] = useState({})
+
+  useEffect(() => {
+    if (document.location.hash === '#receive') {
+      window.history.replaceState('', document.title, window.location.pathname)
+      setScreen('confession')
+    }
+  }, [])
 
   return (
     <>

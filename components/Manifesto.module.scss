@@ -47,7 +47,7 @@
     width: 100%;
     height: 100%;
 
-    background-image: url('/decor/manifest-parts.png');
+    background-image: url('/decor/manifesto-parts.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -208,7 +208,7 @@
   }
 
   &.visible {
-    animation: manifest-hints 1s linear forwards;
+    animation: manifesto-hints 1s linear forwards;
   }
 
   @media screen and (max-width: 1023px) {

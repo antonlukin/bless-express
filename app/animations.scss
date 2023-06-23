@@ -104,18 +104,6 @@
   }
 }
 
-@keyframes welcome-vitral {
-  0% {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @keyframes welcome-description {
   0% {
     transform: translateY(40%);
@@ -131,7 +119,7 @@
   }
 }
 
-@keyframes manifest-title {
+@keyframes manifesto-title {
   0% {
     transform: translateY(50%);
   }
@@ -146,7 +134,7 @@
   }
 }
 
-@keyframes manifest-hints {
+@keyframes manifesto-hints {
   0% {
     opacity: 0;
     transform: translateY(5rem);

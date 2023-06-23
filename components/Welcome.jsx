@@ -11,6 +11,21 @@ import styles from './Welcome.module.scss'
 const Welcome = ({setScreen}) => {
   const ref = useRef(null)
 
+  const updateScreen = () => {
+    ref.current.classList.add(styles.transition)
+
+    setTimeout(() => {
+      setScreen('confession')
+    }, 1150)
+  }
+
+  const showTransition = () => {
+    const vitral = ref.current.querySelector(`.${styles.vitral}`)
+    vitral.classList.add(styles.opened)
+
+    setTimeout(updateScreen, 850)
+  }
+
   useEffect(() => {
     window.history.scrollRestoration = 'manual'
   }, []);
@@ -23,7 +38,7 @@ const Welcome = ({setScreen}) => {
       const description = ref.current.querySelector(`.${styles.description}`)
       description.classList.add(styles.visible)
     }, 600)
-  })
+  }, [])
 
   useEffect(() => {
     // Get all description elements
@@ -65,22 +80,6 @@ const Welcome = ({setScreen}) => {
 
     window.addEventListener('scroll', scrollHandler)
   }, [])
-
-  const updateScreen = () => {
-    ref.current.classList.add(styles.transition)
-
-    setTimeout(() => {
-      setScreen('confession')
-    }, 1150)
-  }
-
-  const showTransition = () => {
-    const vitral = ref.current.querySelector(`.${styles.vitral}`)
-
-    vitral.classList.add(styles.opened)
-
-    setTimeout(updateScreen, 850)
-  }
 
   return (
     <section className={styles.wrapper} ref={ref}>

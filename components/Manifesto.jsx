@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react'
 
 import Link from 'next/link'
 import Header from './Header'
-import TitleImage from '../public/decor/manifest-title.svg'
-import styles from './Manifest.module.scss'
+import TitleImage from '../public/decor/manifesto-title.svg'
+import styles from './Manifesto.module.scss'
 
-const Manifest = ({setScreen}) => {
+const Manifesto = ({setScreen}) => {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -51,14 +51,14 @@ const Manifest = ({setScreen}) => {
     }
 
     window.addEventListener('scroll', scrollHandler)
-  })
+  }, [])
 
   return (
     <section className={styles.wrapper} ref={ref}>
       <Header />
 
       <div className={styles.inner}>
-        <h2 className={styles.title} aria-label='Manifest'>
+        <h2 className={styles.title} aria-label='Manifesto'>
           <TitleImage />
         </h2>
 
@@ -79,8 +79,8 @@ const Manifest = ({setScreen}) => {
           <div className={styles.hints}>
             <figure className={styles.item}>
               <picture>
-                <source srcSet="/decor/manifest-1.png" type="image/png" />
-                <img src="/decor/manifest-1.png" alt="It is OK to spend all your free time in games" width={371} height={557} />
+                <source srcSet="/decor/manifesto-1.png" type="image/png" />
+                <img src="/decor/manifesto-1.png" alt="It is OK to spend all your free time in games" width={371} height={557} />
               </picture>
 
               <figcaption>
@@ -90,8 +90,8 @@ const Manifest = ({setScreen}) => {
 
             <figure className={styles.item}>
               <picture>
-                <source srcSet="/decor/manifest-2.png" type="image/png" />
-                <img src="/decor/manifest-2.png" alt="It's OK to feel irresistible regardless of what others think" width={388} height={559} />
+                <source srcSet="/decor/manifesto-2.png" type="image/png" />
+                <img src="/decor/manifesto-2.png" alt="It's OK to feel irresistible regardless of what others think" width={388} height={559} />
               </picture>
 
               <figcaption>
@@ -101,8 +101,8 @@ const Manifest = ({setScreen}) => {
 
             <figure className={styles.item}>
               <picture>
-                <source srcSet="/decor/manifest-3.png" type="image/png" />
-                <img src="/decor/manifest-3.png" alt="It's okay to sit on the toilet in tiktok" width={412} height={528} />
+                <source srcSet="/decor/manifesto-3.png" type="image/png" />
+                <img src="/decor/manifesto-3.png" alt="It's okay to sit on the toilet in tiktok" width={412} height={528} />
               </picture>
 
               <figcaption>
@@ -120,4 +120,4 @@ const Manifest = ({setScreen}) => {
   )
 }
 
-export default Manifest
+export default Manifesto

@@ -63,7 +63,7 @@ const Confession = ({setScreen, setResults}) => {
     <section className={classes.join(' ')}>
       <Header setScreen={setScreen} />
 
-      <h3 className={styles.caption}>What&apos;s bothering you, my child</h3>
+      <h3 className={styles.caption}>What&apos;s bothering you, my child?</h3>
 
       <form action="/" className={styles.form} method='POST' onSubmit={submitForm}>
         <p>

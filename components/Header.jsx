@@ -3,13 +3,17 @@ import styles from './Header.module.scss'
 
 const Header = ({isFixed, setScreen}) => {
   const returnHome = (e) => {
-    if (!setScreen) {
-      return
+    if (setScreen) {
+      e.preventDefault()
+      setScreen('welcome')
     }
+  }
 
-    e.preventDefault()
-
-    setScreen('welcome')
+  const loadReceive = (e) => {
+    if (setScreen) {
+      e.preventDefault()
+      setScreen('confession')
+    }
   }
 
   const classes = [styles.wrapper]
@@ -26,8 +30,8 @@ const Header = ({isFixed, setScreen}) => {
         </Link>
 
         <nav className={styles.menu}>
-          <Link href='/manifest'>Manifest</Link>
-          <Link href='/'>Receive Indulgence</Link>
+          <Link href='/manifesto'>Manifesto</Link>
+          <Link href='/#receive' onClick={loadReceive}>Receive Indulgence</Link>
 
           <p>
             <span>Created by </span>

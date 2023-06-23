@@ -326,10 +326,9 @@
 
   padding: 0 0 4rem;
   opacity: 0;
-  transform: translateY(2rem);
 
   &.appear {
-    animation: welcome-vitral 1s 0.5s linear forwards;
+    animation: fade-in 1s 0.5s linear forwards;
   }
 
   &.appear .window {

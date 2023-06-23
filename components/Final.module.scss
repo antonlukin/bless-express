@@ -13,7 +13,7 @@
   display: grid;
   grid-template-areas: "title certificate others" "share certificate others";
   grid-template-columns: 21rem 1fr 1fr;
-  grid-template-rows: auto 8.75rem;
+  grid-template-rows: auto 8rem;
 
   width: var(--max-width);
   height: 100vh;
@@ -51,6 +51,7 @@
   position: relative;
   max-width: 100%;
   padding-right: 3.25rem;
+  padding-bottom: 1rem;
   overflow: hidden;
 
   font-family: var(--font-caption);
@@ -74,19 +75,18 @@
 
   @media screen and (max-width: 1279px) {
     margin-bottom: 2rem;
-    padding: 0;
+    padding-right: 0;
   }
 
   @media screen and (max-width: 1023px) {
     width: 32rem;
-    margin: 0 auto 2rem;
-    padding: 0;
+    margin: 0 auto 1rem;
     justify-content: flex-start;
     font-size: 6.25rem;
   }
 
   @media screen and (max-width: 767px) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     font-size: 4.75rem;
   }
 
