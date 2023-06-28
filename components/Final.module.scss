@@ -320,6 +320,8 @@
   overflow: hidden;
   overflow-wrap: break-word;
 
+  font-family: var(--font-sans);
+
   picture {
     order: 2;
     width: 6.5rem;
@@ -330,16 +332,18 @@
     width: calc(100% - 6.5rem);
 
     padding-right: 1.25rem;
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 
   h5 {
     display: block;
     max-width: 100%;
     margin: 0 0 0.75rem;
-    font-size: 1.5rem;
-    font-weight: 400;
+
+    font-size: 1.25rem;
+    font-weight: 600;
     line-height: 1.25;
+    letter-spacing: -0.025px;
   }
 
   p {

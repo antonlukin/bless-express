@@ -234,8 +234,8 @@ final class Sharing
                 'y' => 1508,
                 'width' => 810,
                 'height' => 360,
-                'fontpath'   => $this->dir . '/assets/seagram.ttf',
-                'fontsize'   => 36,
+                'fontpath'   => $this->dir . '/assets/inter.ttf',
+                'fontsize'   => 42,
                 'lineheight' => 1.75,
                 'horizontal' => 'center',
                 'color'      => '#ffffff',
@@ -251,8 +251,8 @@ final class Sharing
                 'y' => 100,
                 'width' => 290,
                 'height' => 520,
-                'fontpath'   => $this->dir . '/assets/seagram.ttf',
-                'fontsize'   => 16,
+                'fontpath'   => $this->dir . '/assets/inter.ttf',
+                'fontsize'   => 24,
                 'lineheight' => 1.75,
                 'horizontal' => 'left',
                 'color'      => '#ffffff',
@@ -289,8 +289,10 @@ final class Sharing
             $data->name = 'Anonymous';
         }
 
+        $data->name = strip_tags($data->name);
+
         if (mb_strlen($data->name) > 100) {
-            $data->name = mb_substr(strip_tags($data->name), 0, 100) . "...";
+            $data->name = mb_substr($data->name, 0, 100) . "...";
         }
 
         $data->key = $this->get_unique_key();

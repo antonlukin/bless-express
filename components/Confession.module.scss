@@ -121,10 +121,10 @@
     padding: 0 1.125rem;
     outline: none;
 
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
 
-    color: rgb(var(--color-secondary));
+    color: rgb(var(--color-white));
     background-color: rgb(var(--color-black));
 
     border: solid 2px transparent;
@@ -133,7 +133,7 @@
     transition: opacity 0.25s;
 
     &::placeholder {
-      color: rgb(var(--color-white));
+      color: rgb(var(--color-primary));
     }
 
     @media screen and (max-width: 767px) {
