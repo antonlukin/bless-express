@@ -5,7 +5,23 @@
   --font-sans: 'Inter', sans-serif;
   --font-caption: 'English Towne', serif;
 
-  --gradinet-confession: conic-gradient(from 164.72deg at 49.95% 50.05%, #FFC75F 0deg, #FFF39D 164.37deg, rgba(255, 255, 255, 0) 228.75deg, rgba(255, 243, 157, 0) 330deg, #FFC75F 360deg);
+  --gradient-confession: conic-gradient(from 20deg at 50%,
+    rgba(255,255,255, 0) 0deg,
+    rgba(255,255,255, 0.5) 164.37deg,
+    rgba(255,255,255, 0.75) 228.75deg,
+    rgba(255,255,255, 0.25) 330deg,
+    rgba(255,255,255, 0) 360deg
+  );
+
+  --gradient-confession: conic-gradient(from 164.72deg at 49.95% 50.05%,
+    rgb(255, 255, 255, 0.25) 0deg,
+    rgb(255, 255, 255, 0.5) 61.87deg,
+    rgba(255, 255, 255, 0) 228.75deg,
+    rgba(255, 255, 255, 0) 330deg,
+    rgb(255, 255, 255, 0.25) 360deg
+  );
+
+
   --gradient-button: linear-gradient(92.75deg, #FFBD5A -6.03%, #FFF59F 52.08%, #FFD56A 109.08%);
   --gradient-hover: linear-gradient(92.75deg, #FF9900 -6.03%, #FFD583 52.5%, #FFB800 109.08%);
 

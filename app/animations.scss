@@ -159,3 +159,21 @@
     left: 300%;
   }
 }
+
+@keyframes confession-background {
+  0% {
+    background-color: #FED687;
+  }
+
+  25% {
+    background-color: #75FF34;
+  }
+
+  50% {
+    background-color: #4269BC;
+  }
+
+  75% {
+    background-color: #EB4056;
+  }
+}
