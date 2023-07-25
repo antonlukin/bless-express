@@ -8,7 +8,7 @@ use Dotenv;
 use PosterEditor\PosterEditor;
 
 if (php_sapi_name() === 'cli') {
-//    exit;
+    exit;
 }
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -231,9 +231,9 @@ final class Sharing
 
             $story->text($data->message, array(
                 'x' => 136,
-                'y' => 1508,
+                'y' => 1400,
                 'width' => 810,
-                'height' => 360,
+                'height' => 300,
                 'fontpath'   => $this->dir . '/assets/inter.ttf',
                 'fontsize'   => 32,
                 'lineheight' => 1.75,
@@ -250,7 +250,7 @@ final class Sharing
                 'x' => 58,
                 'y' => 100,
                 'width' => 290,
-                'height' => 520,
+                'height' => 420,
                 'fontpath'   => $this->dir . '/assets/inter.ttf',
                 'fontsize'   => 16,
                 'lineheight' => 1.75,
