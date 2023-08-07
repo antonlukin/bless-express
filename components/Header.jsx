@@ -32,11 +32,6 @@ const Header = ({isFixed, setScreen}) => {
         <nav className={styles.menu}>
           <Link href='/manifesto'>Manifesto</Link>
           <Link href='/#receive' onClick={loadReceive}>Receive Indulgence</Link>
-
-          <p>
-            <span>Created by </span>
-            <a href='https://tigersoda.agency' target='_blank' rel='noopener'>Tiger Soda</a>
-          </p>
         </nav>
       </div>
     </header>
