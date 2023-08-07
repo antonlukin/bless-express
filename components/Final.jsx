@@ -36,7 +36,7 @@ const Final = ({results, setScreen}) => {
           </h4>
 
           <blockquote>
-            <p>Tiger Soda Agency grants this indulgence for a fresh start, free from guilt and <span className={styles.fish}>shame.</span></p>
+            <p>Our agency grants this indulgence for a fresh start, free from guilt and <span className={styles.fish}>shame.</span></p>
             <p>Let it serve you as a reminder to live life to the fullest, unburdened by the weight of the past.</p>
           </blockquote>
         </div>
@@ -56,15 +56,6 @@ const Final = ({results, setScreen}) => {
             </figure>
           )}
         </div>
-
-        <footer className={styles.footer}>
-          <p>
-            <span>Created by </span>
-            <a href='https://tigersoda.agency' target='_blank' rel='noopener'>Tiger Soda</a>
-          </p>
-
-          <p>2023</p>
-        </footer>
       </div>
     </section>
   )

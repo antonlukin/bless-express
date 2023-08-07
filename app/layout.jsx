@@ -3,7 +3,7 @@ import './globals.scss'
 
 export const metadata = {
   metadataBase: new URL('https://bless.express'),
-  title: 'Blessed Not Depressed by Tiger Soda',
+  title: 'Blessed Not Depressed',
   description: 'It’s time to get rid of shame and start a guilt-free life! Let us save your sanity with the ancient technique of ‘Indulgence’, which first appeared in Europe more than 1,000 years ago.',
 }
 
